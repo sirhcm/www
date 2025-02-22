@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body {
+  font-family: monospace;
+  background: black; color: white;
+  font-size: 16px;
+  margin: 0;
+}
+a { color: white; }
+.hidden > a { color: black; }
+.blink {
+  animation: blinker 2s linear infinite;
+}
+.hidden {
+  color: black;
+}
+pre {
+  display: inline;
+}
+main {
+  height: 100vh;
+}
+#left {
+  border-right: 1px solid white;
+  flex: 1;
+  padding: 10px;
+}
+
+#right {
+  flex: 1;
+  padding: 10px;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+</style>
+</head>
+<body>
+<main style="display: flex; flex-wrap: wrap">
+<div id="left">
+<pre id="text-1">
+$ cat &lt;&lt; EOF &gt; main.c
+&gt; #include &lt;unistd.h&gt;
+&gt;
+&gt; int main() {
+&gt;   write(0, "Hello, world\n", 13);
+&gt;   write(0, "I'm Chris Milan.\n", 17);
+&gt;   write(0, "Welcome to my webpage\n\n", 23);
+&gt;   write(0, "Press ENTER (or tap) to continue...", 26);
+&gt;   read(1, NULL, 1);
+&gt;   return 0;
+&gt; }
+&gt; EOF
+$ cc main.c -o main &amp;&amp; ./main
+Hello, world
+I'm Chris Milan
+Welcome to my webpage
+
+Press ENTER (or tap) to continue...<pre id="cursor-1" class="blink">█</pre>
+</pre>
+<pre id="text-2" class="hidden">
+$ ./about_me
+I am an undergraduate at UCLA, studying Math and Computer Science.
+
+I run the <a href="//ais-ucla.org">AI Safety club at UCLA</a>, and I have a page <a href="//ais-ucla.org/~chris">there</a> too.
+I also wrote <a href="//blog.aisafetyatucla.org/">some blog posts</a> for AI Safety at UCLA.
+
+Press ENTER (or tap) to continue...<pre id="cursor-2" class="blink">█</pre>
+</pre>
+<pre id="text-3" class="hidden">
+$ cat resume.txt
+Click <a href="/resume.pdf">here</a> for the full PDF version.
+
+Last updated: February 21, 2025.
+
+Christopher Milan:                  <a href="//linkedin.com/in/chrismilan">linkedin</a> <a href="//github.com/christopherm99">github</a> chrismilan AT ucla DOT edu
+
+University of California, Los Angeles:             September 2021 -- June 2025
+ * B.S. in Computer Science
+ * B.S. in Mathematics
+
+Coursework:
+ + ---------------- + ---------------- + ---------------- + ---------------- +
+ | Linear Algebra   | Machine Learning | Prog. Languages  | Num. Analysis    |
+ | Hardware for ML  | Operating Sys.   | Real Analysis    | Cryptography     |
+ | Comp. Networks   | Abstract Algebra | Crypt. Protocols | Comp. Imaging    |
+ + ---------------- + ---------------- + ---------------- + ---------------- +
+
+Work Experience (see PDF for more details):
+
+nference, Boston, MA                               June 2024 -- September 2024
+UCLA Cardiac Arrhythmia Center, Los Angeles, CA      January 2023 -- June 2024
+
+Press ENTER (or tap) to continue...<pre id="cursor-3" class="blink">█</pre>
+</pre>
+<pre id="text-4" class="hidden">
+$ logout
+Connection to chrismilan.org closed.
+</pre>
+</div>
+<div id="right">
+<pre>
+top (projects) - last updated 02/21/2025
+
+<p style="background: white; color: black; width: 100%; margin: 0; padding: 0">ID PROJECT            CODE   DESCRIPTION</p>
+ 1 <a href="//cherf.ais-ucla.org">cherf</a>              <a href="//github.com/ais-ucla/cherf">github</a> P2P NAT Holepuncher written in Haskell.
+ 2 <a href="//stats.ais-ucla.org">stats.ais-ucla.org</a> <a href="//github.com/ais-ucla/stats">github</a> Status page for AI Safety cluster, graphed using RRDtool
+ 3 mal                <a href="//github.com/christopherm99/mal">github</a> A silly programming language, with (LLVM) compiler written in OCaml.
+ 4 os                 <a href="//github.com/christopherm99/os">github</a> A toy x64 operating system.
+</pre>
+</div>
+</main>
+<script>
+var i = 1;
+function cont() {
+  if (i < 4) {
+    document.getElementById(`cursor-${i}`).style.display = "none";
+    i++;
+    document.getElementById(`text-${i}`).classList.remove('hidden');
+  }
+}
+document.onkeypress = (e) => {
+  e = e || window.event;
+  if (e.code === "Enter") {
+    cont();
+  }
+}
+document.onclick = cont;
+</script>
+</body>
+</html>
