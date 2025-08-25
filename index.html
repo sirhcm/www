@@ -7,130 +7,109 @@ body {
   font-family: monospace;
   background: black; color: white;
   font-size: 16px;
-  margin: 0;
+  margin: 8px;
 }
 a { color: white; }
-.hidden > a { color: black; }
-.blink {
-  animation: blinker 2s linear infinite;
-}
-.hidden {
-  color: black;
-}
-pre {
-  display: inline;
-}
-main {
-  height: 100vh;
-}
-#left {
-  border-right: 1px solid white;
-  flex: 1;
-  padding: 10px;
-}
-
-#right {
-  flex: 1;
-  padding: 10px;
-}
-@keyframes blinker {
-  50% {
-    opacity: 0;
+h1 {
+  font-style: italic; font-size: 1em;
+  margin: 1.25em 0;
+  &::before {
+    content: "# ";
   }
 }
+li, th, td { padding: 6px; text-align: left; }
+main { margin: auto; max-width: 960px; }
 </style>
 </head>
 <body>
-<main style="display: flex; flex-wrap: wrap">
-<div id="left">
-<pre id="text-1">
-$ cat &lt;&lt; EOF &gt; main.c
-&gt; #include &lt;unistd.h&gt;
-&gt;
-&gt; int main() {
-&gt;   write(0, "Hello, world\n", 13);
-&gt;   write(0, "I'm Chris Milan.\n", 17);
-&gt;   write(0, "Welcome to my webpage\n\n", 23);
-&gt;   write(0, "Press ENTER (or tap) to continue...", 26);
-&gt;   read(1, NULL, 1);
-&gt;   return 0;
-&gt; }
-&gt; EOF
-$ cc main.c -o main &amp;&amp; ./main
-Hello, world
-I'm Chris Milan
-Welcome to my webpage
-
-Press ENTER (or tap) to continue...<pre id="cursor-1" class="blink">█</pre>
-</pre>
-<pre id="text-2" class="hidden">
-$ ./about_me
-I am an undergraduate at UCLA, studying Math and Computer Science.
-
-I run the <a href="//ais-ucla.org">AI Safety club at UCLA</a>, and I have a page <a href="//ais-ucla.org/~chris">there</a> too.
-I also wrote <a href="//blog.aisafetyatucla.org/">some blog posts</a> for AI Safety at UCLA.
-
-Press ENTER (or tap) to continue...<pre id="cursor-2" class="blink">█</pre>
-</pre>
-<pre id="text-3" class="hidden">
-$ cat resume.txt
-Click <a href="/resume.pdf">here</a> for the full PDF version.
-
-Last updated: February 21, 2025.
-
-Christopher Milan:                  <a href="//linkedin.com/in/chrismilan">linkedin</a> <a href="//github.com/christopherm99">github</a> chrismilan AT ucla DOT edu
-
-University of California, Los Angeles:             September 2021 -- June 2025
- * B.S. in Computer Science
- * B.S. in Mathematics
-
-Coursework:
- + ---------------- + ---------------- + ---------------- + ---------------- +
- | Linear Algebra   | Machine Learning | Prog. Languages  | Num. Analysis    |
- | Hardware for ML  | Operating Sys.   | Real Analysis    | Cryptography     |
- | Comp. Networks   | Abstract Algebra | Crypt. Protocols | Comp. Imaging    |
- + ---------------- + ---------------- + ---------------- + ---------------- +
-
-Work Experience (see PDF for more details):
-
-nference, Boston, MA                               June 2024 -- September 2024
-UCLA Cardiac Arrhythmia Center, Los Angeles, CA      January 2023 -- June 2024
-
-Press ENTER (or tap) to continue...<pre id="cursor-3" class="blink">█</pre>
-</pre>
-<pre id="text-4" class="hidden">
-$ logout
-Connection to chrismilan.org closed.
-</pre>
+<main>
+  <!--
+<header style="text-align:center">
+<h1>Christopher Milan</h1>
+<p><a href="/">home</a> | <a href="//github.com/sirhcm">github</a> | <a href="//linkedin.com/in/chrismilan">linkedin</a> | <a href="/resume">resume</a></p>
+</header>
+!-->
+<header style="text-align:center">
+<p style="text-align:left;margin-bottom:0">Welcome to</p>
+<div style="margin:0 auto;max-width:fit-content;text-align:left">
+<pre style="margin:0">┏━╸╻ ╻┏━┓╻┏━┓┏┳┓╻╻  ┏━┓┏┓╻
+┃  ┣━┫┣┳┛┃┗━┓┃┃┃┃┃  ┣━┫┃┗┫
+┗━╸╹ ╹╹┗╸╹┗━┛╹ ╹╹┗━╸╹ ╹╹ ╹ .org</pre>
 </div>
-<div id="right">
-<pre>
-top (projects) - last updated 02/21/2025
-
-<p style="background: white; color: black; width: 100%; margin: 0; padding: 0">ID PROJECT            CODE   DESCRIPTION</p>
- 1 <a href="//cherf.ais-ucla.org">cherf</a>              <a href="//github.com/ais-ucla/cherf">github</a> P2P NAT Holepuncher written in Haskell.
- 2 <a href="//stats.ais-ucla.org">stats.ais-ucla.org</a> <a href="//github.com/ais-ucla/stats">github</a> Status page for AI Safety cluster, graphed using RRDtool
- 3 mal                <a href="//github.com/christopherm99/mal">github</a> A silly programming language, with (LLVM) compiler written in OCaml.
- 4 os                 <a href="//github.com/christopherm99/os">github</a> A toy x64 operating system.
-</pre>
-</div>
+<p style="text-align:right">updated: 8/25/25</p>
+<p><a href="/">home</a> | <a href="//github.com/sirhcm">github</a> | <a href="//linkedin.com/in/chrismilan">linkedin</a> | <a href="/resume">resume</a></p>
+</header>
+<hr/>
+<h1>About me</h1>
+<p>My name is Christopher Milan.</p>
+<p>I like touching computers. Physical hardware deserves admiration; <a href="//andrewkelley.me/post/renting-is-for-suckers.html">renting is for suckers</a>.</p>
+<p>
+I studied at UCLA from 2021 to 2025, where I recieved bachelor's degrees in (pure) math and computer science.
+While at UCLA I ran the <a href="//ais-ucla.org">AI Safety club at UCLA</a>, and I have a page <a href="//ais-ucla.org/~chris">there</a> too.
+</p>
+<h1>Interests</h1>
+<p>
+Here is a list of some of my interests:
+<ul>
+<li><b>Low-level programming</b>: C, Assembly, Architecture.</li>
+<li><b>Reverse engineering</b>: I played pwn and rev for <a href="//pbr.acmcyber.com">PBR</a>, UCLA's CTF team.</li>
+<li><b>Compiler and language design</b>: Mostly toy compilers for toy languages, but I am a contributor to <a href="//github.com/tinygrad/tinygrad">tinygrad</a>.</li>
+<li><b>Skiing</b></li>
+<li><b>Climbing</b></li>
+<li><b>Photography</b></li>
+</ul>
+</p>
+<h1>Projects</h1>
+<table style="margin:0 auto;max-width:fit-content">
+  <thead><tr><th>name</th><th>src</th><th>language</th><th>description</th></tr></thead>
+<tbody>
+  <tr>
+    <td>ctb</td>
+    <td><a href="//github.com/sirhcm/ctb">1</a></td>
+    <td>C99</td>
+    <td>C99 single header libraries</td>
+  </tr>
+  <tr>
+    <td>braid</td>
+    <td><a href="//github.com/sirhcm/libbraid">1</a></td>
+    <td>C99, asm</td>
+    <td>C99 library for coroutines<td>
+  </tr>
+  <tr>
+    <td><a href="//cherf.ais-ucla.org">cherf</a></td>
+    <td><a href="//github.com/ais-ucla/cherf">1</a></td>
+    <td>Haskell</td>
+    <td>TCP NAT holepuncher</td>
+  </tr>
+  <tr>
+    <td>cherf2</td>
+    <td><a href="//github.com/sirhcm/cherf2">1</a></td>
+    <td>C99</td>
+    <td>rewrite of cherf in C, using braid and monocypher</td>
+  </tr>
+  <tr>
+    <td><a href="//stats.ais-ucla.org">stats</a></td>
+    <td><a href="//github.com/ais-ucla/stats">1</a>, <a href="//git.ais-ucla.org/?p=stats.ais-ucla.org.git">2</a></td>
+    <td>C, perl</td>
+    <td>status page for AI Safety cluster, using RRDtool</td>
+  </tr>
+  <tr>
+    <td>mal</td>
+    <td><a href="//github.com/sirhcm/mal">1</a></td>
+    <td>OCaml</td>
+    <td>toy programming language, with (LLVM) compiler</td></tr>
+  <tr>
+    <td>os</td>
+    <td><a href="//github.com/sirhcm/os">1</a></td>
+    <td>C, asm</td>
+    <td>toy x86_64 operating system.</td>
+  </tr>
+</table>
+<h1>Writing</h1>
+<ul>
+  <li>[Winter 2025] <a href="//ais-ucla.org/~chris/w25-symposium.pdf"><b>How to build a GPU cluster</b></a> &mdash; A talk about how I built AI Safety at UCLA's GPU cluster.</li>
+</ul>
+<p>Additionally, I have some older posts (mostly about the cluster) on the <a href=//blog.aisafetyatucla.org/>AI safety blog</a>.</p>
 </main>
-<script>
-var i = 1;
-function cont() {
-  if (i < 4) {
-    document.getElementById(`cursor-${i}`).style.display = "none";
-    i++;
-    document.getElementById(`text-${i}`).classList.remove('hidden');
-  }
-}
-document.onkeypress = (e) => {
-  e = e || window.event;
-  if (e.code === "Enter") {
-    cont();
-  }
-}
-document.onclick = cont;
-</script>
 </body>
 </html>
